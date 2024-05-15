@@ -1,9 +1,13 @@
-import { StyleSheet, Button, View, ScrollView } from 'react-native';
-import MyStack from './components/pages/router';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, ScrollView,SafeAreaView } from 'react-native';
+
 
 export default function App() {
   return (
-      <MyStack/>
+    <View style={styles.container}>
+      <Text>fortnite mobile</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
