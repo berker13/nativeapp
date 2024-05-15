@@ -1,4 +1,5 @@
 import { View, TextInput, Text, StyleSheet } from "react-native";
+import React from 'react';
 
 export default function LoginPage(){
     const [text, onChangeText] = React.useState('Useless Text');

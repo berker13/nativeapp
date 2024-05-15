@@ -1,9 +1,11 @@
 import { StyleSheet, Button, View, ScrollView } from 'react-native';
-import MyStack from './components/pages/router';
+import MyTabs from './components/bottom_navigation_bar';
 
 export default function App() {
   return (
-      <MyStack/>
+      <View style ={styles.container}>
+        <MyTabs/>
+      </View>
   );
 }
 
