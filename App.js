@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, View, Image, Text } from 'react-native';
+import { StyleSheet, Button, View, Image, Text, TextInput } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import MyTabs from './components/bottom_navigation_bar';
 
 export default function App() {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [description, setDescription] = useState('');
 
     const pickImage = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -29,9 +30,18 @@ export default function App() {
     return (
         <View style={styles.container}>
             <MyTabs />
-            <Text style={styles.title}>Welcome to the Image Picker!</Text>
-            <Button title="Pick an image from camera roll" onPress={pickImage} color="#6200EE" />
+            <Text style={styles.title}>Vítejte v aplikaci pro výběr obrázků!</Text>
+            <Button title="Vyberte obrázek z galerie" onPress={pickImage} color="#6200EE" />
             {selectedImage && <Image source={{ uri: selectedImage }} style={styles.image} />}
+            {selectedImage && (
+                <TextInput
+                    style={styles.input}
+                    onChangeText={setDescription}
+                    value={description}
+                    placeholder="Zadejte popis obrázku"
+                    placeholderTextColor="#999"
+                />
+            )}
         </View>
     );
 }
@@ -58,13 +68,13 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#6200EE',
     },
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
-        backgroundColor: '#6200EE',
+    input: {
+        height: 40,
+        width: '80%',
+        margin: 12,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        borderRadius: 5,
     },
 });
